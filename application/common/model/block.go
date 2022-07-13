@@ -1,5 +1,9 @@
 package model
 
+import (
+	domain "github.com/jiazhen-lin/indexer/domain/block"
+)
+
 // pk: id
 // unique index:
 //	- uni_hash
@@ -16,6 +20,24 @@ type Block struct {
 
 func (b Block) TableName() string {
 	return "Block"
+}
+
+func (b Block) ToBlockEntity() domain.Block {
+	return domain.Block{
+		Number:     b.Number,
+		Hash:       b.Hash,
+		Time:       b.Timestamp,
+		ParentHash: b.ParentHash,
+	}
+}
+
+func (b Block) ToBlockDetail() domain.BlockDetail {
+	return domain.BlockDetail{
+		Number:     b.Number,
+		Hash:       b.Hash,
+		Time:       b.Timestamp,
+		ParentHash: b.ParentHash,
+	}
 }
 
 // pk: id
@@ -36,6 +58,17 @@ type Transaction struct {
 
 func (t Transaction) TableName() string {
 	return "Transaction"
+}
+
+func (t Transaction) ToTranactionEntity() domain.Transaction {
+	return domain.Transaction{
+		Hash:  t.TxHash,
+		From:  t.From,
+		To:    t.To,
+		Nonce: t.Nonce,
+		Value: t.Value,
+		Data:  t.Data,
+	}
 }
 
 // pk: id
