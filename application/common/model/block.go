@@ -1,7 +1,7 @@
 package model
 
 import (
-	domain "github.com/jiazhen-lin/indexer/domain/block"
+	domain "github.com/jiazhen-lin/indexer/application/domain/block"
 )
 
 // pk: id
